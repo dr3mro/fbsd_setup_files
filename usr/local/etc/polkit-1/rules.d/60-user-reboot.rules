@@ -1,0 +1,16 @@
+polkit.addRule(function (action, subject) {
+	  if ((action.id == "org.freedesktop.consolekit.system.restart" ||
+      action.id == "org.freedesktop.consolekit.system.stop")
+      && subject.isInGroup("wheel")) {
+    return polkit.Result.YES;
+  }
+});
+
+
+polkit.addRule(function (action, subject) {
+	  if (action.id == "org.freedesktop.consolekit.system.suspend"
+      && subject.isInGroup("wheel")) {
+    return polkit.Result.YES;
+  }
+});
+
